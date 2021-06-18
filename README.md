@@ -18,7 +18,7 @@ void loop() {
   cur_time = millis(); // measure the current time
   if(cur_time >= time)
   {
-    digitalWrite(led, !digitalRead(led)); // Write a HIGH or a LOW value to the led pin.
+    digitalWrite(led, !digitalRead(led)); // write a HIGH or a LOW value to the led pin
     time +=period; 
   }
   
@@ -27,12 +27,29 @@ void loop() {
 
 ## Voltage divider
 
-***TASK*** >> You need measure a voltage value from ADT on Arduino. For this task you need two resistors, wires and Arduino. Getting a value can be viewed in ***Serial Monitor***.
+***TASK*** >> Use two resistors to make a voltage divider. Measure voltage after the first resistor. Getting a value can be viewed in ***Serial Monitor***.
 
 Circuit for this task:
 ![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/LED_connection.png)
 
-My code:
+Program code:
+```
+void setup() {
+ Serial.begin(9600);
+}
+
+void loop() {
+  int sensorValue = analogRead(A0);
+  float voltage = sensorValue * (5.0 / 1024.0);
+  Serial.println(voltage);
+}
+```
+
+## Multitasking
+
+***TASK*** >> Make tasks ***Flashing built-in LED*** and ***Voltage divider*** at same time.
+
+Program code:
 ```
 int time =0;
 int cur_time =0;
@@ -47,22 +64,13 @@ void loop() {
   cur_time = millis();
   if(cur_time >= time)
   {
-    digitalWrite(13, !digitalRead(LED_BUILTIN));
+    digitalWrite(13, !digitalRead(LED_BUILTIN)); //write a HIGH or a LOW value to the led pin
     time += period;
   }
   int sensorValue = analogRead(A0);
   float voltage = sensorValue * (5.0 / 1024.0);
   Serial.println(voltage);
 }
-```
-
-## Multitasking
-
-***TASK*** >> Make tasks ***Flashing built-in LED*** and ***Voltage divider*** at same time.
-
-My code:
-```
-CODE
 ```
 
 ## LCD Display 
@@ -97,7 +105,7 @@ void loop()
 ***TASK*** >> Read what an interruption is. Make sure that when you press the button, the diode turns off.
 
 Circuit for this task:
-![alt text}(https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/Interrupt_task.png)
+![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/Interrupt_task.png)
 
 My code:
 ```
@@ -118,15 +126,54 @@ void loop()
 ```
 ## Debouncing a button
 
-***TASK*** >> 
+***TASK*** >> Using a software or hardware method to improve the operation of button.
 
 * ### **Software method**
 Circuit for this method:
+
 ![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/LED_with_button.png)
 
+Program code:
+```
+```
 
 
 * ### **Hardware method**
 Circuit for this method:
+
 ![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/LED_with_button_and_capacitor.png)
 
+Program code:
+```
+#define LED_PIN 8 // define the led pin
+#define BUTTON_PIN 5 // define the button pin
+
+byte lastButtonState = LOW; // A variable that stores the last button status
+byte ledState = LOW; // A variable that stores the LED status
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);
+}
+void loop() {
+  byte buttonState = digitalRead(BUTTON_PIN);
+  Serial.println(buttonState);
+  if (buttonState != lastButtonState) {
+    lastButtonState = buttonState;
+    if (buttonState == LOW) {
+      if(ledState == HIGH)
+      {
+        ledState = LOW;
+      }
+      else 
+      {
+        ledState = HIGH;
+      }
+      digitalWrite(LED_PIN, ledState);
+    }
+  }
+}
+```
+
+## How connect 
