@@ -69,6 +69,9 @@ CODE
 
 ***TASK*** >> For given LCD display provide code, that output words or sentences on different position of display. Connect the additional ***LiquidCrystal_I2C.h*** and deal with it. Also read about ***I2C scanner***.
 
+Circuit for this task:
+![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/LCD_I2C.png)
+
 My code:
 ```
 #include <LiquidCrystal_I2C.h>
@@ -94,6 +97,7 @@ void loop()
 ***TASK*** >> Read what an interruption is. Make sure that when you press the button, the diode turns off.
 
 Circuit for this task:
+![alt text}(https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/Interrupt_task.png)
 
 My code:
 ```
@@ -117,7 +121,12 @@ void loop()
 ***TASK*** >> 
 
 * ### **Software method**
+Circuit for this method:
+![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/LED_with_button.png)
+
 
 
 * ### **Hardware method**
+Circuit for this method:
+![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/LED_with_button_and_capacitor.png)
 
