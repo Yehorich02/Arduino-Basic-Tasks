@@ -30,9 +30,7 @@ void loop() {
 ***TASK*** >> You need measure a voltage value from ADT on Arduino. For this task you need two resistors, wires and Arduino. Getting a value can be viewed in ***Serial Monitor***.
 
 Circuit for this task:
-```
-Circuit
-```
+![alt text](https://github.com/Yehorich02/Arduino-Basic-Tasks/blob/main/LED_connection.png)
 
 My code:
 ```
